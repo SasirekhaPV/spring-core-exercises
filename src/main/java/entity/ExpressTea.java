@@ -1,0 +1,9 @@
+package entity;
+
+public class ExpressTea implements HotDrink{
+
+    @Override
+    public void prepareHotDrink() {
+        System.out.println("Express Tea prepared");
+    }
+}
