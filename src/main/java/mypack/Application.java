@@ -8,8 +8,8 @@ public class Application {
     public static void main(String[] args) {
         ApplicationContext context =new ClassPathXmlApplicationContext("beans.xml");
 
-        //Solution 9a (@Autowire using field)
-        System.out.println("Solution 9a");
+        //Solution 9b (@Autowire using setter method)
+        System.out.println("Solution 9b");
         Restaurant restaurant=context.getBean("restaurant",Restaurant.class);
         restaurant.getHotDrink().prepareHotDrink();
     }
