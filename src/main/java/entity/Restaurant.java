@@ -9,11 +9,12 @@ public class Restaurant {
     public Restaurant() {
     }
 
+    @Autowired
+    public Restaurant(HotDrink hotDrink) {
+        this.hotDrink = hotDrink;
+    }
+
     public HotDrink getHotDrink() {
         return hotDrink;
-    }
-    @Autowired
-    public void setHotDrink(HotDrink hotDrink) {
-        this.hotDrink = hotDrink;
     }
 }
