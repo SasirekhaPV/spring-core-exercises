@@ -5,45 +5,14 @@
         xsi:schemaLocation="http://www.springframework.org/schema/beans
                http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean id="database" class="entity.Database">
-        <property name="port" value="8080"></property>
-        <property name="name" value="port1"></property>
-    </bean>
 
-    <bean id="tea" class="entity.Tea"></bean>
+    <bean id="tea" class="entity.Tea" name="hotDrink"></bean>
     <bean id="expressTea" class="entity.ExpressTea"></bean>
+    <bean id="restaurant1" class="entity.Restaurant" autowire="byName"></bean>
+    <!--<bean id="restaurant2" class="entity.Restaurant" autowire="byType"></bean>-->
+    <bean id="restaurant3" class="entity.Restaurant" autowire="constructor"></bean>
 
-    <bean id="teaRestaurant" class="entity.Restaurant">
+    <bean id="teaRestaurant" class="entity.Restaurant" scope="prototype">
         <property name="hotDrink" ref="tea"></property>
-    </bean>
-
-    <bean id="expressTeaRestaurant" class="entity.Restaurant">
-        <property name="hotDrink">
-            <bean class="entity.ExpressTea"></bean>
-        </property>
-    </bean>
-
-    <bean id="complexBean" class="entity.Complex">
-        <property name="list">
-            <list>
-                <value>list-value1</value>
-                <value>list-value2</value>
-                <value>list-value3</value>
-            </list>
-        </property>
-        <property name="set">
-            <set>
-                <value>set-value1</value>
-                <value>set-value2</value>
-                <value>set-value3</value>
-            </set>
-        </property>
-        <property name="map">
-            <map>
-                <entry key="key1" value="map-value1"></entry>
-                <entry key="key2" value="map-value2"></entry>
-                <entry key="key3" value="map-value3"></entry>
-            </map>
-        </property>
     </bean>
 </beans>

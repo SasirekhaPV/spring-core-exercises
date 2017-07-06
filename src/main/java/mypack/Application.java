@@ -4,54 +4,31 @@ import entity.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 public class Application {
     public static void main(String[] args) {
         ApplicationContext context =new ClassPathXmlApplicationContext("beans.xml");
 
-        //Solution 2
-        Database db=context.getBean("database", Database.class);
-        System.out.println("\nSol2 :Displaying instance variables of Database object:");
-        System.out.println(db.getName());
-        System.out.println(db.getPort());
+        //Solution 6
+        System.out.println("Solution 6");
+        Restaurant restaurant1=context.getBean("restaurant1",Restaurant.class);
+        // Restaurant restaurant2=context.getBean("restaurant2",Restaurant.class);
+        Restaurant restaurant3=context.getBean("restaurant3",Restaurant.class);
 
-        //Solution 3
-        Restaurant teaRestaurant= context.getBean("teaRestaurant",Restaurant.class);
-        System.out.println("\nSol3");
+        restaurant1.getHotDrink().prepareHotDrink();
+        //restaurant2.getHotDrink().prepareHotDrink();
+        restaurant3.getHotDrink().prepareHotDrink();
+
+        //Solution 7
+        System.out.println("\nSolution 7");
+        Restaurant teaRestaurant=context.getBean("teaRestaurant",Restaurant.class);
+
+        //hot drind of teaRestaurant changed
+        teaRestaurant.setHotDrink(new ExpressTea());
         teaRestaurant.getHotDrink().prepareHotDrink();
 
-        //Solution 4
-        System.out.println("\nSol4");
-        HotDrink hotDrink=context.getBean("tea",Tea.class);    //Doubt: what should we actually write?
-        // writing Tea.class introduces tight coupling, and what is actually happening here Tea->Object? Object->Tea->HotDrink
-        hotDrink.prepareHotDrink();
-        HotDrink hotDrink1=context.getBean("expressTea", ExpressTea.class);
-        hotDrink1.prepareHotDrink();
-
-        //Solution 4- 2nd part
-        System.out.println("\nSol4- 2nd part");
-        Restaurant expressTeaRestaurant=context.getBean("expressTeaRestaurant",Restaurant.class);
-        expressTeaRestaurant.getHotDrink().prepareHotDrink();
-
-        //Solution 5
-        System.out.println("\nSol5");
-        Complex complex=context.getBean("complexBean",Complex.class);
-
-        List list=complex.getList();
-        list.forEach(System.out::println);
-
-        Set set=complex.getSet();
-        set.forEach(System.out::println);
-
-        Map<String,String> map=(Map<String,String>)complex.getMap();
-        for(Map.Entry entry:map.entrySet()){
-            System.out.println(entry.getKey()+" "+entry.getValue());
-        }
+        //another instance of teaRestaurant created using getBean
+        Restaurant teaRestaurant1=context.getBean("teaRestaurant",Restaurant.class);
+        teaRestaurant1.getHotDrink().prepareHotDrink();
 
     }
 }
