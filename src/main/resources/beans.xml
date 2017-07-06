@@ -7,9 +7,8 @@
 
 
     <bean id="tea" class="entity.Tea" name="hotDrink"></bean>
-    <bean id="expressTea" class="entity.ExpressTea"></bean>
     <bean id="restaurant1" class="entity.Restaurant" autowire="byName"></bean>
-    <!--<bean id="restaurant2" class="entity.Restaurant" autowire="byType"></bean>-->
+    <bean id="restaurant2" class="entity.Restaurant" autowire="byType"></bean>
     <bean id="restaurant3" class="entity.Restaurant" autowire="constructor"></bean>
 
     <bean id="teaRestaurant" class="entity.Restaurant" scope="prototype">
