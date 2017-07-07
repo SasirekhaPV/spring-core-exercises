@@ -27,8 +27,7 @@ public class Application {
 
         //Solution 4
         System.out.println("\nSol4");
-        HotDrink hotDrink=context.getBean("tea",Tea.class);    //Doubt: what should we actually write?
-        // writing Tea.class introduces tight coupling, and what is actually happening here Tea->Object? Object->Tea->HotDrink
+        HotDrink hotDrink=context.getBean("tea",Tea.class);
         hotDrink.prepareHotDrink();
         HotDrink hotDrink1=context.getBean("expressTea", ExpressTea.class);
         hotDrink1.prepareHotDrink();
